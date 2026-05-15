@@ -2,11 +2,13 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: blitzy-vllm
-  description: "vLLM high-throughput LLM inference engine fork — exploring AI-assisted ML infrastructure"
+  description: vLLM high-throughput LLM inference engine fork — exploring AI-assisted
+    ML infrastructure
   tags:
-    - python
-    - library
-    - performance
+  - ai
+  - library
+  - performance
+  - python
   labels:
     blitzy.com/language: python
   annotations:
@@ -14,11 +16,11 @@ metadata:
     github.com/project-slug: Blitzy-Sandbox/blitzy-vllm
     backstage.io/source-location: url:https://github.com/Blitzy-Sandbox/blitzy-vllm/tree/main/
   links:
-    - url: https://github.com/Blitzy-Sandbox/blitzy-vllm
-      title: GitHub Repository
-    - url: https://github.com/Blitzy-Sandbox/blitzy-vllm/tree/main/blitzy/documentation
-      title: Blitzy Documentation
-      icon: docs
+  - url: https://github.com/Blitzy-Sandbox/blitzy-vllm
+    title: GitHub Repository
+  - url: https://github.com/Blitzy-Sandbox/blitzy-vllm/tree/main/blitzy/documentation
+    title: Blitzy Documentation
+    icon: docs
 spec:
   type: library
   lifecycle: experimental
