@@ -30,9 +30,7 @@ def test_bad_words_defaults_to_empty_list():
 
 
 def test_bad_words_parsed_from_json_payload():
-    # A JSON body must parse into a *declared* typed field, not a tolerated
-    # extra: OpenAIBaseModel sets extra="allow", so value equality alone would
-    # also hold while the value merely sat in model_extra and was dropped.
+    # JSON validation must bind bad_words as a declared typed field.
     assert "bad_words" in CompletionRequest.model_fields
     assert CompletionRequest.model_fields["bad_words"].annotation == list[str]
     request = CompletionRequest.model_validate(
@@ -43,9 +41,7 @@ def test_bad_words_parsed_from_json_payload():
 
 
 def test_bad_words_default_is_not_shared_between_requests():
-    # default_factory=list must give each request its own list object. Pydantic
-    # also deep-copies a bare mutable default, so the mandated mechanism itself
-    # is pinned here rather than only its observable consequence.
+    # Assert the factory itself because Pydantic also isolates bare list defaults.
     assert CompletionRequest.model_fields["bad_words"].default_factory is list
     first = CompletionRequest(model="m", prompt="hi")
     second = CompletionRequest(model="m", prompt="hi")
